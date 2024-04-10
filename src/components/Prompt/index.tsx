@@ -24,6 +24,8 @@ const action = async (data: FormData) => {
     return;
   }
 
+  let imageUrl = "";
+
   try {
     console.log("running...");
     const res = await openai.images.generate({
@@ -32,19 +34,20 @@ const action = async (data: FormData) => {
       n: 1,
       quality: "standard",
       response_format: "url",
-      size: "1024x1024",
+      size: "1792x1024",
       style: "vivid",
     });
 
     const url = res?.data?.[0]?.url;
 
     if (url) {
+      console.log(url);
       const sourceImage = await fetch(url);
       const sourceImageBuffer = await sourceImage.arrayBuffer();
       const params = {
         Bucket: process.env.R2_PHOTO_BUCKET!,
-        Key: randomUUID(),
-        Body: sourceImageBuffer,
+        Key: `${randomUUID()}.png`,
+        Body: Buffer.from(sourceImageBuffer),
         ContentType: "image/png",
         ACL: "public-read",
       };
@@ -69,12 +72,15 @@ const action = async (data: FormData) => {
         });
       });
 
-      const imageUrl = result?.key;
-      return redirect(`/done?image=${encodeURI(imageUrl)}`);
+      console.log(result);
+
+      imageUrl = result?.Key;
     }
   } catch (error) {
-    console.error(error);
+    return;
   }
+
+  return redirect(`/done?imageUrl=https://dalle.static.donley.xyz/${imageUrl}`);
 };
 
 export const PromptForm = () => {
