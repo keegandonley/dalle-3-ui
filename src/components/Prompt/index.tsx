@@ -8,6 +8,8 @@ import { S3 } from "aws-sdk";
 
 const promptName = "openai-prompt";
 
+export const maxDuration = 300;
+
 const action = async (data: FormData) => {
   "use server";
 
