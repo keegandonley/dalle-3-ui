@@ -1,6 +1,8 @@
 import { CredentialsForm } from "@/components/Credentials";
 import { PromptForm } from "@/components/Prompt";
 
+export const maxDuration = 300;
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

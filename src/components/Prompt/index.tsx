@@ -14,6 +14,7 @@ const action = async (data: FormData) => {
   "use server";
 
   const prompt = data.get(promptName) as string;
+
   cookies().set(promptName, prompt);
 
   const apiKey = cookies().get(apiKeyName)?.value;
