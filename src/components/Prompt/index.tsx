@@ -57,7 +57,6 @@ const action = async (data: FormData) => {
     const url = res?.data?.[0]?.url;
 
     if (url) {
-      console.log(url);
       const sourceImage = await fetch(url);
       const sourceImageBuffer = await sourceImage.arrayBuffer();
       const params = {
