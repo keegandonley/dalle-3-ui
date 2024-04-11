@@ -7,8 +7,19 @@ export default function RedeemPage({
 }: {
   searchParams: Record<string, string>;
 }) {
-  const { imageUrl } = searchParams;
+  const { imageUrl, resolution, style, quality } = searchParams;
   const downloadUrl = decodeURIComponent(imageUrl);
+
+  let width = 1792;
+  let height = 1024;
+
+  if (resolution) {
+    const [w, h] = resolution.split("x").map((v) => parseInt(v, 10));
+    if (w && h) {
+      width = w;
+      height = h;
+    }
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-6 sm:p-12 md:p-24 w-full">
@@ -33,6 +44,17 @@ export default function RedeemPage({
           Do not direct link to the image from the internet. If you want to
           share the image, download it first and then share the downloaded file.
         </p>
+        <div className="flex gap-4 pb-4">
+          <p className="text-sm opacity-60 bg-[rgba(0,0,0,0.4)] p-2 rounded-lg">
+            Resolution: {width}x{height}
+          </p>
+          <p className="text-sm opacity-60 bg-[rgba(0,0,0,0.4)] p-2 rounded-lg">
+            Style: {style}
+          </p>
+          <p className="text-sm opacity-60 bg-[rgba(0,0,0,0.4)] p-2 rounded-lg">
+            Quality: {quality}
+          </p>
+        </div>
         <div>
           <Image
             width={1792}

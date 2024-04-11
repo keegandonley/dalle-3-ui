@@ -6,6 +6,7 @@ import OpenAI from "openai";
 import { randomUUID } from "crypto";
 import { S3 } from "aws-sdk";
 import { ImageGenerateParams } from "openai/resources/images.mjs";
+import Link from "next/link";
 
 const promptName = "openai-prompt";
 const resolutionName = "openai-resolution";
@@ -37,6 +38,9 @@ const action = async (data: FormData) => {
   });
 
   if (!apiKey) {
+    return redirect(
+      `/error?message=${encodeURIComponent("No API key provided")}`
+    );
     return;
   }
 
@@ -90,12 +94,16 @@ const action = async (data: FormData) => {
       console.log(result);
 
       imageUrl = result?.Key;
+    } else {
+      throw new Error("No image URL returned");
     }
-  } catch (error) {
-    return;
+  } catch (error: any) {
+    return redirect(`/error?message=${encodeURIComponent(error.message)}`);
   }
 
-  return redirect(`/done?imageUrl=https://dalle.static.donley.xyz/${imageUrl}`);
+  return redirect(
+    `/done?imageUrl=https://dalle.static.donley.xyz/${imageUrl}&resolution=${resolution}&style=${style}&quality=${quality}`
+  );
 };
 
 export const PromptForm = () => {
@@ -175,6 +183,13 @@ export const PromptForm = () => {
       >
         Generate
       </ClientPromptForm>
+      <Link
+        className="text-center text-sm opacity-70"
+        href="https://platform.openai.com/docs/api-reference/images/create"
+        target="_blank"
+      >
+        read the docs
+      </Link>
     </form>
   );
 };
