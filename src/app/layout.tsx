@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
 import { merge } from "@keegancodes/foundations";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "DALL·E 3 UI",
@@ -32,6 +33,7 @@ export default function RootLayout({
           </Link>
         </div>
       </body>
+      <Analytics />
     </html>
   );
 }
