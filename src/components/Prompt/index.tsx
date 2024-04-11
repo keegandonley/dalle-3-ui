@@ -90,16 +90,21 @@ export const PromptForm = () => {
   const promptValue = cookies().get(promptName)?.value ?? "";
 
   return (
-    <form action={action} className="flex flex-col">
-      <span className="flex flex-col">
-        <label htmlFor={promptName}>Prompt</label>
+    <form action={action} className="flex flex-col gap-4">
+      <span className="flex flex-col gap-2">
+        <label htmlFor={promptName} className="text-sm opacity-50">
+          Prompt
+        </label>
         <textarea
           defaultValue={promptValue}
           placeholder="Prompt"
           name={promptName}
+          className="bg-[rgba(0,0,0,0.2)] rounded-lg shadow-md text-white p-2 w-full h-64"
         />
       </span>
-      <ClientPromptForm>Generate</ClientPromptForm>
+      <ClientPromptForm className="whitespace-nowrap bg-[rgba(0,0,0,0.5)] p-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)]">
+        Generate
+      </ClientPromptForm>
     </form>
   );
 };
