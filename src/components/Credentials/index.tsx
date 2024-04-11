@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { ClientCredentialsForm } from "./Client";
 import { cookies } from "next/headers";
 
@@ -9,6 +10,8 @@ const action = async (data: FormData) => {
   const apiKey = data.get(apiKeyName) as string;
 
   cookies().set(apiKeyName, apiKey);
+
+  return redirect("/");
 };
 
 export const CredentialsForm = () => {
@@ -25,7 +28,7 @@ export const CredentialsForm = () => {
             defaultValue={apiKeyValue}
             placeholder="OpenAI API Key"
             name={apiKeyName}
-            type="text"
+            type="password"
             className="bg-[rgba(0,0,0,0.2)] rounded-lg shadow-md text-white p-2 w-full"
           />
           <ClientCredentialsForm className="whitespace-nowrap bg-[rgba(0,0,0,0.5)] p-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)]">
