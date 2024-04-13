@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@keegancodes/foundations": "^1.0.21",
+    "@keegancodes/foundations": "^1.1.1",
     "@keegancodes/foundations-react": "^1.0.30",
     "@vercel/analytics": "^1.2.2",
     "aws-sdk": "^2.1599.0",

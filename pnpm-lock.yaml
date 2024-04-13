@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@keegancodes/foundations':
-    specifier: ^1.0.21
-    version: 1.0.21
+    specifier: ^1.1.1
+    version: 1.1.1
   '@keegancodes/foundations-react':
     specifier: ^1.0.30
-    version: 1.0.30(@keegancodes/foundations@1.0.21)(@types/react@18.2.78)(react@18.2.0)
+    version: 1.0.30(@keegancodes/foundations@1.1.1)(@types/react@18.2.78)(react@18.2.0)
   '@vercel/analytics':
     specifier: ^1.2.2
     version: 1.2.2(next@14.2.1)(react@18.2.0)
@@ -180,20 +180,20 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@keegancodes/foundations-react@1.0.30(@keegancodes/foundations@1.0.21)(@types/react@18.2.78)(react@18.2.0):
+  /@keegancodes/foundations-react@1.0.30(@keegancodes/foundations@1.1.1)(@types/react@18.2.78)(react@18.2.0):
     resolution: {integrity: sha512-HtUIqt93MziRKIejgPmQiABTHLqhkIXJc/mhYFrqUq3l5oB8JBbSD/gC4/psbMs4VRQn+4HQX+y4Mez27YFY5g==}
     peerDependencies:
       '@keegancodes/foundations': ^1.0.21
       '@types/react': ^18.2.77
       react: ^18.2.0
     dependencies:
-      '@keegancodes/foundations': 1.0.21
+      '@keegancodes/foundations': 1.1.1
       '@types/react': 18.2.78
       react: 18.2.0
     dev: false
 
-  /@keegancodes/foundations@1.0.21:
-    resolution: {integrity: sha512-g2MnXcdxlCwJlMYvmyT6Vkv/GB+B24LPbFdnDFUqo0p7wuQrz006Kvp78S+1QdhGrwNaTINEY6UulCVzxkTcFQ==}
+  /@keegancodes/foundations@1.1.1:
+    resolution: {integrity: sha512-vkIUUcrBUocULlbytcZgHra0Yp2Jh2mBS2ZPZw+mfeXAAqA9upBWI/sFyYKA292UVbPovhcbTqiDKGk0FF9kog==}
     dev: false
 
   /@next/env@14.2.1:
