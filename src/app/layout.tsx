@@ -3,6 +3,7 @@ import "./globals.css";
 import Link from "next/link";
 import { merge } from "@keegancodes/foundations";
 import { Analytics } from "@vercel/analytics/react";
+import { TailwindDebugger } from "@keegancodes/foundations-react/client";
 
 export const metadata: Metadata = {
   title: "DALL·E 3 UI",
@@ -33,6 +34,8 @@ export default function RootLayout({
           </Link>
         </div>
       </body>
+      {process.env.NODE_ENV === "development" ? <TailwindDebugger /> : null}
+
       <Analytics />
     </html>
   );
