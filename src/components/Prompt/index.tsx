@@ -41,7 +41,6 @@ const action = async (data: FormData) => {
     return redirect(
       `/error?message=${encodeURIComponent("No API key provided")}`
     );
-    return;
   }
 
   let imageUrl = "";
