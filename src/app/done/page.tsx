@@ -1,6 +1,5 @@
 import { merge } from "@keegancodes/foundations";
 import { GeistSans } from "geist/font/sans";
-import Image from "next/image";
 
 export default function RedeemPage({
   searchParams,
@@ -56,7 +55,8 @@ export default function RedeemPage({
           </p>
         </div>
         <div>
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             width={1792}
             height={1024}
             src={downloadUrl}
