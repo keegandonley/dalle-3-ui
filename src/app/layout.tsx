@@ -33,8 +33,8 @@ export default function RootLayout({
             Keegan Donley
           </Link>
         </div>
+        {process.env.NODE_ENV === "development" ? <TailwindDebugger /> : null}
       </body>
-      {process.env.NODE_ENV === "development" ? <TailwindDebugger /> : null}
 
       <Analytics />
     </html>
