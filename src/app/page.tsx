@@ -15,10 +15,10 @@ export default function Home() {
         )}
       >
         <div>
-          <h1 className="font-bold text-2xl">DALL·E 3 UI</h1>
+          <h1 className="font-bold text-2xl">OpenAI Image Generator</h1>
           <p className="pt-4">
-            Input your OpenAI API key and prompt to generate an image using the
-            DALL·E 3 model.
+            Input your OpenAI API key and prompt to generate an image using
+            OpenAI&apos;s GPT image models.
           </p>
           <p className="pt-6 text-sm">
             Your API token is sent with your request to generate the image, but

@@ -6,7 +6,7 @@ export default function RedeemPage({
 }: {
   searchParams: Record<string, string>;
 }) {
-  const { imageUrl, resolution, style, quality } = searchParams;
+  const { imageUrl, resolution, model, quality } = searchParams;
   const downloadUrl = decodeURIComponent(imageUrl);
 
   let width = 1792;
@@ -48,7 +48,7 @@ export default function RedeemPage({
             Resolution: {width}x{height}
           </p>
           <p className="text-sm opacity-60 bg-[rgba(0,0,0,0.4)] p-2 rounded-lg">
-            Style: {style}
+            Model: {model}
           </p>
           <p className="text-sm opacity-60 bg-[rgba(0,0,0,0.4)] p-2 rounded-lg">
             Quality: {quality}

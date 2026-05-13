@@ -6,9 +6,9 @@ import { Analytics } from "@vercel/analytics/react";
 import { TailwindDebugger } from "@keegancodes/foundations-react/client";
 
 export const metadata: Metadata = {
-  title: "DALL·E 3 UI",
+  title: "OpenAI Image Generator",
   description:
-    "A UI to generate images using the DALL·E 3 model, with your own API key",
+    "A UI to generate images using OpenAI image models, with your own API key",
 };
 
 export default function RootLayout({
