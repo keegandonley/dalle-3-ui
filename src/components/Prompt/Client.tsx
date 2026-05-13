@@ -16,10 +16,10 @@ export const ClientPromptForm = (props: ClientPromptFormProps) => {
 
   return (
     <button
-      className={merge(className, "disabled:opacity-40")}
+      className={merge(className, "disabled:opacity-40 disabled:cursor-not-allowed")}
       disabled={res.pending || disabled}
     >
-      {res.pending ? "loading..." : children}
+      {res.pending ? "Generating…" : children}
     </button>
   );
 };
@@ -56,7 +56,7 @@ export const ImageOptionsForm = ({
   return (
     <div className="flex flex-col sm:flex-row gap-4">
       <span className="flex flex-col">
-        <label className="text-sm opacity-50 pb-2">Model</label>
+        <label className="text-xs text-white/50 pb-1.5">Model</label>
         <select name={modelName} defaultValue={defaultModel} className={selectClass}>
           {models.map((m) => (
             <option key={m} value={m}>
@@ -66,17 +66,17 @@ export const ImageOptionsForm = ({
         </select>
       </span>
       <span className="flex flex-col">
-        <label className="text-sm opacity-50 pb-2">Resolution</label>
+        <label className="text-xs text-white/50 pb-1.5">Resolution</label>
         <select name={resolutionName} defaultValue={defaultResolution} className={selectClass}>
           {sizes.map((s) => (
             <option key={s} value={s}>
-              {s}
+              {s.charAt(0).toUpperCase() + s.slice(1)}
             </option>
           ))}
         </select>
       </span>
       <span className="flex flex-col">
-        <label className="text-sm opacity-50 pb-2">Quality</label>
+        <label className="text-xs text-white/50 pb-1.5">Quality</label>
         <select name={qualityName} defaultValue={defaultQuality} className={selectClass}>
           {qualities.map((q) => (
             <option key={q} value={q}>

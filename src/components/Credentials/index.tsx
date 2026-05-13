@@ -20,19 +20,19 @@ export const CredentialsForm = () => {
   return (
     <form action={action} className="flex flex-col">
       <span className="flex flex-col gap-2">
-        <label htmlFor={apiKeyName} className="text-sm opacity-50">
-          OpenAI API Key
+        <label htmlFor={apiKeyName} className="text-xs text-white/50">
+          API Key
         </label>
         <div className="flex gap-2">
           <input
             defaultValue={apiKeyValue}
-            placeholder="OpenAI API Key"
+            placeholder="sk-proj-..."
             name={apiKeyName}
             type="password"
-            className="bg-[rgba(0,0,0,0.2)] rounded-lg shadow-md text-white p-2 w-full"
+            className="bg-black/20 border border-white/15 focus:border-white/45 focus:outline-none rounded-lg shadow-sm text-white p-2 w-full transition-colors placeholder:text-white/25"
           />
-          <ClientCredentialsForm className="whitespace-nowrap bg-[rgba(0,0,0,0.5)] p-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)]">
-            Save Credentials
+          <ClientCredentialsForm className="whitespace-nowrap bg-black/40 hover:bg-black/60 border border-white/20 text-white text-sm px-4 py-2 rounded-lg transition-colors disabled:opacity-40">
+            Save
           </ClientCredentialsForm>
         </div>
       </span>

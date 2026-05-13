@@ -11,21 +11,27 @@ export default function ErrorPage({
   const errorMessage = decodeURIComponent(message);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-6 sm:p-12 md:p-24 w-full">
+    <main className="flex min-h-screen flex-col items-center justify-start p-6 sm:p-12 md:p-24 w-full pb-16">
       <div
         className={merge(
-          "z-10 w-full flex flex-col items-center bg-[rgba(0,0,0,0.2)] backdrop-blur-md text-white p-4 rounded-lg",
+          "z-10 w-full max-w-2xl flex flex-col items-center bg-black/20 backdrop-blur-md text-white p-6 rounded-xl border border-white/10 shadow-xl",
           GeistSans.className
         )}
       >
-        <h1 className="text-center font-bold text-2xl pb-4 pt-2">Error</h1>
-        <p className="pt-2 pb-6 text-left w-full">{errorMessage}</p>
-        <Link
-          href="/"
-          className="whitespace-nowrap bg-[rgba(0,0,0,0.5)] p-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)]"
-        >
-          Try Again
-        </Link>
+        <h1 className="text-center font-bold text-2xl pb-4 pt-2 text-red-400">
+          Something went wrong
+        </h1>
+        <div className="w-full bg-red-500/10 border border-red-500/25 rounded-lg p-4 mb-6">
+          <p className="text-sm text-white/80 leading-relaxed">{errorMessage}</p>
+        </div>
+        <div className="flex gap-3">
+          <Link
+            href="/"
+            className="bg-blue-500 hover:bg-blue-400 text-white font-semibold px-6 py-2.5 rounded-lg transition-colors whitespace-nowrap"
+          >
+            Try Again
+          </Link>
+        </div>
       </div>
     </main>
   );

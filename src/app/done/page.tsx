@@ -1,5 +1,6 @@
 import { merge } from "@keegancodes/foundations";
 import { GeistSans } from "geist/font/sans";
+import Link from "next/link";
 
 export default function RedeemPage({
   searchParams,
@@ -11,8 +12,9 @@ export default function RedeemPage({
 
   let width = 1792;
   let height = 1024;
+  const isAutoResolution = !resolution || resolution === "auto";
 
-  if (resolution) {
+  if (!isAutoResolution) {
     const [w, h] = resolution.split("x").map((v) => parseInt(v, 10));
     if (w && h) {
       width = w;
@@ -21,56 +23,81 @@ export default function RedeemPage({
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-6 sm:p-12 md:p-24 w-full">
+    <main className="flex min-h-screen flex-col items-center justify-start p-6 sm:p-12 md:p-24 w-full pb-16">
       <div
         className={merge(
-          "z-10 w-full flex flex-col items-center bg-[rgba(0,0,0,0.2)] backdrop-blur-md text-white p-4 rounded-lg",
+          "z-10 w-full max-w-4xl flex flex-col items-center bg-black/20 backdrop-blur-md text-white p-6 rounded-xl border border-white/10 shadow-xl",
           GeistSans.className
         )}
       >
-        <h1 className="text-center font-bold text-2xl pb-4 pt-2">
-          Output Image
-        </h1>
-        <p className="pt-2 pb-6 text-left w-full">
-          Here is your generated image! Click the download button to save the
-          original, full-resolution png. The image is stored on our server for
-          easy retrieval, but maybe deleted after 30 days. Bookmark this page if
-          you want to come back to it later, but downloading your image is
-          recommended. You API key was not saved to our servers. Remember,
-          anyone with the link can access this image.
-        </p>
-        <p className="pt-2 pb-6 text-left w-full">
-          Do not direct link to the image from the internet. If you want to
-          share the image, download it first and then share the downloaded file.
-        </p>
-        <div className="flex gap-4 pb-4">
-          <p className="text-sm opacity-60 bg-[rgba(0,0,0,0.4)] p-2 rounded-lg">
-            Resolution: {width}x{height}
-          </p>
-          <p className="text-sm opacity-60 bg-[rgba(0,0,0,0.4)] p-2 rounded-lg">
-            Model: {model}
-          </p>
-          <p className="text-sm opacity-60 bg-[rgba(0,0,0,0.4)] p-2 rounded-lg">
-            Quality: {quality}
-          </p>
+        <div className="w-full flex items-center justify-between mb-2">
+          <Link
+            href="/"
+            className="text-sm text-white/50 hover:text-white/80 transition-colors"
+          >
+            ← Generate another
+          </Link>
         </div>
-        <div>
+
+        <h1 className="text-center font-bold text-2xl py-4 w-full">
+          Generated Image
+        </h1>
+
+        <p className="pb-5 text-sm text-white/60 leading-relaxed w-full">
+          Download the image to save a local copy — it may be deleted from our
+          servers after 30 days. Bookmark this page if you&apos;d like to
+          return. Anyone with this link can view the image.
+        </p>
+
+        <div className="flex flex-wrap gap-2 pb-5 w-full">
+          <span className="text-xs text-white/60 bg-black/30 border border-white/10 px-3 py-1.5 rounded-lg">
+            Resolution: {isAutoResolution ? "auto" : `${width}×${height}`}
+          </span>
+          <span className="text-xs text-white/60 bg-black/30 border border-white/10 px-3 py-1.5 rounded-lg">
+            Model: {model}
+          </span>
+          <span className="text-xs text-white/60 bg-black/30 border border-white/10 px-3 py-1.5 rounded-lg">
+            Quality: {quality}
+          </span>
+        </div>
+
+        <div className="w-full rounded-lg overflow-hidden shadow-lg">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            width={1792}
-            height={1024}
+            width={width}
+            height={height}
             src={downloadUrl}
             alt="Generated Image"
+            className="w-full h-auto"
           />
         </div>
-        <div className="pt-6">
-          <a
-            href={downloadUrl}
-            download
-            className="whitespace-nowrap bg-[rgba(0,0,0,0.5)] p-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)]"
-          >
-            Download
-          </a>
+
+        <div className="pt-6 flex flex-col items-center gap-3">
+          <div className="flex gap-3">
+            <a
+              href={downloadUrl}
+              download
+              className="inline-flex items-center justify-center h-10 bg-blue-500 hover:bg-blue-400 text-white font-semibold px-6 rounded-lg transition-colors whitespace-nowrap"
+            >
+              Download Image
+            </a>
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center h-10 bg-white/10 hover:bg-white/20 text-white font-semibold px-4 rounded-lg transition-colors whitespace-nowrap"
+            >
+              Generate Another
+            </Link>
+          </div>
+          <p className="text-xs text-white/40">
+            a project by{" "}
+            <Link
+              href="https://keegan.codes"
+              className="text-yellow-400/60 hover:text-yellow-400 transition-colors"
+              target="_blank"
+            >
+              keegan.codes
+            </Link>
+          </p>
         </div>
       </div>
     </main>

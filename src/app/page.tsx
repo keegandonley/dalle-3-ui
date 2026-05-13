@@ -7,37 +7,33 @@ export const maxDuration = 300;
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-6 sm:p-12 md:p-24 w-full">
+    <main className="flex min-h-screen flex-col items-center justify-start p-6 sm:p-12 md:p-24 w-full pb-16">
       <div
         className={merge(
-          "z-10 w-full items-center bg-[rgba(0,0,0,0.2)] backdrop-blur-md text-white p-4 rounded-lg",
+          "z-10 w-full max-w-2xl bg-black/20 backdrop-blur-md text-white p-6 rounded-xl border border-white/10 shadow-xl",
           GeistSans.className
         )}
       >
-        <div>
-          <h1 className="font-bold text-2xl">OpenAI Image Generator</h1>
-          <p className="pt-4">
-            Input your OpenAI API key and prompt to generate an image using
-            OpenAI&apos;s GPT image models.
-          </p>
-          <p className="pt-6 text-sm">
-            Your API token is sent with your request to generate the image, but
-            is never stored on our servers. The resulting image is stored on our
-            server for easy retrieval. Bookmark the result page if you want to
-            come back to it later. Images may be deleted after a period of 30
-            days, so downloading it is recommended. Do not direct link to the
-            image from the internet.
-          </p>
-          <p className="pt-6 text-sm">
-            A unique URL will be generated for your image. Anyone with the link
-            can access and download the image.
-          </p>
-          <div className="pt-6">
-            <CredentialsForm />
-          </div>
-          <div className="pt-6">
-            <PromptForm />
-          </div>
+        <h1 className="font-bold text-2xl">OpenAI Image Generator</h1>
+        <p className="mt-3 text-sm text-white/65 leading-relaxed">
+          Generate images using OpenAI&apos;s GPT image models with your own
+          API key. Your key is sent directly with the request and never stored.
+          Generated images are hosted for up to 30 days — download them for
+          safekeeping. Anyone with the result link can view the image.
+        </p>
+
+        <div className="mt-6 border-t border-white/10 pt-6">
+          <h2 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">
+            API Credentials
+          </h2>
+          <CredentialsForm />
+        </div>
+
+        <div className="mt-6 border-t border-white/10 pt-6">
+          <h2 className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-4">
+            Image Prompt
+          </h2>
+          <PromptForm />
         </div>
       </div>
     </main>

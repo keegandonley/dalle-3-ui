@@ -100,14 +100,14 @@ export const PromptForm = () => {
   return (
     <form action={action} className="flex flex-col gap-4">
       <span className="flex flex-col gap-2">
-        <label htmlFor={promptName} className="text-sm opacity-50">
-          Prompt
+        <label htmlFor={promptName} className="text-xs text-white/50">
+          Describe the image
         </label>
         <textarea
           defaultValue={promptValue}
-          placeholder="Prompt"
+          placeholder="Describe the image you want to generate..."
           name={promptName}
-          className="bg-[rgba(0,0,0,0.2)] rounded-lg shadow-md text-white p-2 w-full h-64"
+          className="bg-black/20 border border-white/15 focus:border-white/45 focus:outline-none rounded-lg shadow-sm text-white p-3 w-full min-h-[128px] resize-y transition-colors placeholder:text-white/25"
         />
       </span>
       <ImageOptionsForm
@@ -117,21 +117,38 @@ export const PromptForm = () => {
         defaultModel={modelValue}
         defaultResolution={resolutionValue}
         defaultQuality={qualityValue}
-        selectClass="bg-[rgba(0,0,0,0.2)] rounded-lg shadow-md text-white p-2"
+        selectClass="bg-black/20 border border-white/15 focus:border-white/45 focus:outline-none rounded-lg shadow-sm text-white p-2 transition-colors"
       />
       <ClientPromptForm
         disabled={!apiKey}
-        className="whitespace-nowrap bg-[rgba(0,0,0,0.5)] p-2 rounded-lg hover:bg-[rgba(0,0,0,0.7)]"
+        className="bg-blue-500 hover:bg-blue-400 text-white font-semibold px-4 py-2.5 rounded-lg transition-colors"
       >
-        Generate
+        Generate Image
       </ClientPromptForm>
-      <Link
-        className="text-center text-sm opacity-70"
-        href="https://platform.openai.com/docs/api-reference/images/create"
-        target="_blank"
-      >
-        read the docs
-      </Link>
+      {!apiKey && (
+        <p className="text-xs text-white/40 text-center -mt-2">
+          Save your API key above to enable generation
+        </p>
+      )}
+      <div className="flex items-center justify-between">
+        <Link
+          className="text-xs text-white/40 hover:text-white/70 transition-colors"
+          href="https://developers.openai.com/api/docs/guides/image-generation"
+          target="_blank"
+        >
+          OpenAI Images API docs ↗
+        </Link>
+        <span className="text-xs text-white/40">
+          a project by{" "}
+          <Link
+            href="https://keegan.codes"
+            className="text-yellow-400/60 hover:text-yellow-400 transition-colors"
+            target="_blank"
+          >
+            keegan.codes
+          </Link>
+        </span>
+      </div>
     </form>
   );
 };
